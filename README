@@ -1,0 +1,41 @@
+# Sistema de Gestão de Estoque - Mercado
+
+Aplicação CRUD em PHP e MySQL para cadastrar e controlar produtos de um mercado.
+
+## Tecnologias e requisitos
+
+- PHP 8 ou superior com PDO MySQL habilitado
+- MySQL ou MariaDB
+- XAMPP, WAMP ou outro servidor web com PHP
+
+## Instalação
+
+1. Copie esta pasta para `htdocs` (XAMPP) ou para a pasta pública do seu servidor.
+2. Importe `database/db.sql` no phpMyAdmin ou em outro cliente MySQL. O script cria o banco `gestao_estoque_mercado`, a tabela `produtos` e alguns registros de exemplo.
+3. Se necessário, ajuste host, usuário e senha no arquivo `infra/conexao.php`.
+4. Inicie Apache e MySQL e abra `http://localhost/crud_gestao_estoque_mercado/`.
+
+## Estrutura
+
+| Arquivo | Finalidade |
+| --- | --- |
+| `index.php` | Lista produtos e oferece links para editar e excluir |
+| `public/cadastrar.php` | Formulário e operação de cadastro |
+| `public/editar.php` | Formulário e operação de edição |
+| `public/excluir.php` | Operação de exclusão |
+| `public/funcoes.php` | Consultas, operações CRUD e validação |
+| `infra/conexao.php` | Conexão PDO com MySQL |
+| `database/db.sql` | Criação e configuração do banco e da tabela |
+| `casos_de_uso.md` | Atores, ações e diagrama de caso de uso |
+
+## Dados armazenados
+
+A tabela `produtos` contém nome, categoria, descrição, preço, quantidade em estoque e data de validade, além da chave primária `id`.
+
+## Segurança e validação
+
+As consultas usam Prepared Statements do PDO. Os campos são validados no servidor, valores exibidos são escapados com `htmlspecialchars` e falhas de banco são registradas no log do PHP sem expor detalhes técnicos na página.
+
+## Caso de uso
+
+Consulte [`casos_de_uso.md`](casos_de_uso.md) para ver o ator e as ações disponíveis.
